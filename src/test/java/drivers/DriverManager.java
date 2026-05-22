@@ -57,7 +57,7 @@ public class DriverManager {
                         new ChromeOptions();
 
                 braveOptions.setBinary(
-                        "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
+                        "C:\\Users\\Ayush\\AppData\\Local\\BraveSoftware\\Brave-Browser\\Application\\brave.exe"
                 );
 
                 driver.set(new ChromeDriver(braveOptions));

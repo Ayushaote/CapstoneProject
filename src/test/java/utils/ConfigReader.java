@@ -6,16 +6,29 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    private static final Properties properties = new Properties();
+    private static final Properties configProperties =
+            new Properties();
+
+    private static final Properties locatorProperties =
+            new Properties();
 
     static {
 
         try {
 
-            FileInputStream fis =
-                    new FileInputStream("src/test/resources/config.properties");
+            FileInputStream configFis =
+                    new FileInputStream(
+                            "src/test/resources/config.properties"
+                    );
 
-            properties.load(fis);
+            configProperties.load(configFis);
+
+            FileInputStream locatorFis =
+                    new FileInputStream(
+                            "src/test/resources/locators.properties"
+                    );
+
+            locatorProperties.load(locatorFis);
 
         } catch (IOException e) {
 
@@ -25,6 +38,11 @@ public class ConfigReader {
 
     public static String getProperty(String key) {
 
-        return properties.getProperty(key);
+        return configProperties.getProperty(key);
+    }
+
+    public static String getLocator(String key) {
+
+        return locatorProperties.getProperty(key);
     }
 }
