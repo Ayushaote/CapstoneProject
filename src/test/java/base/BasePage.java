@@ -9,6 +9,7 @@ import utils.WaitUtils;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class BasePage {
 
@@ -42,9 +43,21 @@ public class BasePage {
 
         WaitUtils.waitForClickability(element);
 
-        element.click();
-    }
+        try {
 
+            element.click();
+
+        } catch (Exception e) {
+
+            JavascriptExecutor js =
+                    (JavascriptExecutor) driver;
+
+            js.executeScript(
+                    "arguments[0].click();",
+                    element
+            );
+        }
+    }
     protected void type(String locatorKey, String text) {
 
         WebElement element = getElement(locatorKey);

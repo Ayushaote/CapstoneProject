@@ -1,0 +1,12 @@
+{
+  "login": {
+    "email": "ayushaccount1@gmail.com",
+    "password": "Ayushaccount1@123"
+  },
+
+  "note": {
+    "title": "Capstone Framework",
+    "description": "Building enterprise QA framework",
+    "category": "Work"
+  }
+}
