@@ -6,6 +6,10 @@
 
         <classes>
 
+            <class name="tests.ui.LoginTest"/>
+
+            <class name="tests.ui.CreateNoteTest"/>
+
         </classes>
 
     </test>
