@@ -71,7 +71,7 @@ public class DriverManager {
                 );
         }
 
-        driver.get().manage().window().maximize();
+        getDriver().manage().window().maximize();
     }
 
     public static WebDriver getDriver() {
