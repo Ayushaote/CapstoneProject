@@ -76,4 +76,36 @@ public class NotesPage extends BasePage {
 
         return false;
     }
+
+    public void deleteNote(String noteTitle) {
+
+        List<WebElement> notes =
+                driver.findElements(
+                        LocatorResolver.getLocator(
+                                "notes.card.container"
+                        )
+                );
+
+        for(WebElement note : notes) {
+
+            if(note.getText().contains(noteTitle)) {
+
+                WebElement deleteButton =
+                        note.findElement(
+                                LocatorResolver.getLocator(
+                                        "notes.delete.button"
+                                )
+                        );
+
+                deleteButton.click();
+
+                break;
+            }
+        }
+    }
+
+    public boolean isNoteDeleted(String noteTitle) {
+
+        return !isNotePresent(noteTitle);
+    }
 }
