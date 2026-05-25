@@ -10,6 +10,8 @@
             <class name="tests.ui.CreateNoteTest"/>
             <class name="tests.ui.DeleteNoteTest"/>
             <class name="tests.api.GetNotesApiTest"/>
+            <class name="tests.api.CreateNoteApiTest"/>
+            <class name="tests.api.DeleteNoteApiTest"/>
 
         </classes>
 
