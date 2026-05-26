@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import org.apache.logging.log4j.Logger;
 
+import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
@@ -45,13 +46,14 @@ public class CreateNoteApiTest {
 
         logger.info("Creating note via API");
 
-        Response response =
-                NotesApi.createNote(
+        Response response = ApiRetryUtility.executeWithRetry
+                (
+                        () ->   NotesApi.createNote(
                         token,
                         "API Note",
                         "Created through API",
                         "Work"
-                );
+                ));
 
         logger.info("Validating response status");
 

@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import org.apache.logging.log4j.Logger;
 
+import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
@@ -45,8 +46,10 @@ public class GetNotesApiTest {
 
         logger.info("Calling GET /notes API");
 
-        Response response =
-                NotesApi.getAllNotes(token);
+        Response response = ApiRetryUtility.executeWithRetry(
+                () -> NotesApi.getAllNotes(token)
+        );
+
 
         logger.info("Validating response status code");
 

@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import org.apache.logging.log4j.Logger;
 
+import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
@@ -58,11 +59,10 @@ public class DeleteNoteApiTest {
 
         logger.info("Deleting note via API");
 
-        Response response =
-                NotesApi.deleteNote(
-                        token,
-                        noteId
-                );
+        Response response = ApiRetryUtility.executeWithRetry(
+                () -> NotesApi.deleteNote(token, noteId)
+        );
+
 
         logger.info("Validating delete response");
 
