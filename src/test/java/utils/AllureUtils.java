@@ -1,0 +1,19 @@
+package utils;
+
+import io.qameta.allure.Attachment;
+
+public class AllureUtils {
+
+    @Attachment(
+            value = "{0}",
+            type = "application/json"
+    )
+
+    public static String attachJson(
+            String name,
+            String json
+    ) {
+
+        return json;
+    }
+}

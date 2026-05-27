@@ -57,21 +57,31 @@ public class NotesPage extends BasePage {
         clickCreateButton();
     }
 
-    public boolean isNotePresent(String noteTitle) {
+    public boolean isNotePresent(String noteTitle)
+    {
+        try {
 
-        List<WebElement> notes =
-                driver.findElements(
-                        LocatorResolver.getLocator(
-                                "notes.card.container"
-                        )
-                );
+            List<WebElement> notes =
+                    driver.findElements(
+                            LocatorResolver.getLocator(
+                                    "notes.card.container"
+                            )
+                    );
 
-        for(WebElement note : notes) {
+            for(WebElement note : notes) {
 
-            if(note.getText().contains(noteTitle)) {
+                String actualTitle =
+                        note.getText();
 
-                return true;
+                if(actualTitle.equals(noteTitle)) {
+
+                    return true;
+                }
             }
+
+        } catch(Exception e) {
+
+            return false;
         }
 
         return false;

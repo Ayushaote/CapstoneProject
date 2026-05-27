@@ -14,12 +14,29 @@ import org.apache.logging.log4j.Logger;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import utils.WaitUtils;
+
+
+@Feature("UI Note Management")
 public class CreateNoteTest extends BaseTest {
 
     private static final Logger logger =
             LoggerUtility.getLogger(CreateNoteTest.class);
 
-    @Test
+    @Severity(SeverityLevel.CRITICAL)
+
+    @Description(
+            "Validates note creation through UI"
+    )
+
+    @Test(
+            retryAnalyzer =
+                    listeners.RetryAnalyzer.class
+    )
     public void validateNoteCreation() {
 
         HomePage homePage =
@@ -86,6 +103,8 @@ public class CreateNoteTest extends BaseTest {
         );
 
         logger.info("Validating created note");
+
+        WaitUtils.sleep(2000);
 
         Assert.assertTrue(
                 notesPage.isNotePresent(noteTitle),

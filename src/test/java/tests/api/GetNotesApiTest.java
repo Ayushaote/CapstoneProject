@@ -10,9 +10,12 @@ import org.testng.annotations.Test;
 
 import org.apache.logging.log4j.Logger;
 
+import utils.AllureUtils;
 import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
+
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class GetNotesApiTest {
 
@@ -55,12 +58,26 @@ public class GetNotesApiTest {
 
         response.then().statusCode(200);
 
+        logger.info("Validating JSON schema");
+
+        response.then().assertThat()
+                .body(
+                        matchesJsonSchemaInClasspath(
+                                "schemas/notes-schema.json"
+                        )
+                );
+
         logger.info("Validating response contains expected note");
 
         Assert.assertTrue(
                 response.asString()
                         .contains("Capstone Framework"),
                 "Expected note not found in API response"
+        );
+
+        AllureUtils.attachJson(
+                "GET Notes Response",
+                response.asPrettyString()
         );
 
         long responseTime =

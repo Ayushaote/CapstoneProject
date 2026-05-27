@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import org.apache.logging.log4j.Logger;
 
+import utils.AllureUtils;
 import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
@@ -66,6 +67,11 @@ public class CreateNoteApiTest {
 
         logger.info(
                 "Create Note API test completed successfully"
+        );
+
+        AllureUtils.attachJson(
+                "GET Notes Response",
+                response.asPrettyString()
         );
     }
 }
