@@ -27,7 +27,9 @@ public class DriverManager {
 
             case "chrome":
 
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver()
+                        .browserVersion("148")
+                        .setup();
 
                 driver.set(new ChromeDriver());
 
