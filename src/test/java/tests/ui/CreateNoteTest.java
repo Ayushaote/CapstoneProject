@@ -11,14 +11,12 @@ import pages.NotesPage;
 
 import org.apache.logging.log4j.Logger;
 
-import utils.JsonDataReader;
-import utils.LoggerUtility;
+import utils.*;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import utils.WaitUtils;
 
 
 @Feature("UI Note Management")
@@ -111,6 +109,16 @@ public class CreateNoteTest extends BaseTest {
                 "Note was not created successfully!"
         );
 
+        AllureUtils.attachScreenshot(
+
+                "Final UI State",
+
+                ScreenshotUtils.captureScreenshot(
+                        "CreateNoteSuccess"
+                )
+        );
+
         logger.info("Note creation test completed successfully");
+
     }
 }

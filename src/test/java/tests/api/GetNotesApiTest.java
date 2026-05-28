@@ -15,12 +15,24 @@ import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
+@Feature("Notes API")
 public class GetNotesApiTest {
 
     private static final Logger logger =
             LoggerUtility.getLogger(GetNotesApiTest.class);
+
+    @Severity(SeverityLevel.CRITICAL)
+
+    @Description(
+            "Validates notes using GET API"
+    )
 
     @Test
     public void validateGetNotesApi() {
@@ -53,6 +65,10 @@ public class GetNotesApiTest {
                 () -> NotesApi.getAllNotes(token)
         );
 
+        AllureUtils.attachJson(
+                "GET Notes Response",
+                response.asPrettyString()
+        );
 
         logger.info("Validating response status code");
 

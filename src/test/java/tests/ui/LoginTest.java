@@ -1,13 +1,16 @@
 package tests.ui;
 
 import base.BaseTest;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class LoginTest extends BaseTest {
 
-    @Test
+@Feature("Login Validation")
+
+public class LoginTest extends BaseTest {
+   @Test
     public void validateSuccessfulLogin() {
 
         HomePage homePage =

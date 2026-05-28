@@ -1,19 +1,38 @@
 package utils;
 
-import io.qameta.allure.Attachment;
+import io.qameta.allure.Allure;
+
+import java.io.ByteArrayInputStream;
 
 public class AllureUtils {
 
-    @Attachment(
-            value = "{0}",
-            type = "application/json"
-    )
-
-    public static String attachJson(
+    public static void attachJson(
             String name,
             String json
     ) {
 
-        return json;
+        Allure.addAttachment(
+                name,
+                "application/json",
+                new ByteArrayInputStream(
+                        json.getBytes()
+                ),
+                ".json"
+        );
+    }
+
+    public static void attachScreenshot(
+            String attachmentName,
+            byte[] screenshot
+    ) {
+
+        Allure.addAttachment(
+                attachmentName,
+                "image/png",
+                new ByteArrayInputStream(
+                        screenshot
+                ),
+                ".png"
+        );
     }
 }

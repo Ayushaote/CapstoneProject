@@ -15,12 +15,24 @@ import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
+@Feature("Notes API")
 public class CreateNoteApiTest {
 
     private static final Logger logger =
             LoggerUtility.getLogger(
                     CreateNoteApiTest.class
             );
+
+    @Severity(SeverityLevel.CRITICAL)
+
+    @Description(
+            "Validates note creation using POST API"
+    )
 
     @Test
     public void validateCreateNoteApi() {
@@ -55,6 +67,11 @@ public class CreateNoteApiTest {
                         "Created through API",
                         "Work"
                 ));
+
+        AllureUtils.attachJson(
+                "POST Create Note Response",
+                response.asPrettyString()
+        );
 
         logger.info("Validating response status");
 

@@ -2,6 +2,9 @@ package tests.ui;
 
 import base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,10 +17,19 @@ import org.apache.logging.log4j.Logger;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
 
+import io.qameta.allure.Feature;
+
+@Feature("UI Note Management")
 public class DeleteNoteTest extends BaseTest {
 
     private static final Logger logger =
             LoggerUtility.getLogger(DeleteNoteTest.class);
+
+    @Severity(SeverityLevel.CRITICAL)
+
+    @Description(
+            "Validates note deletion through UI"
+    )
 
     @Test
     public void validateNoteDeletion() {

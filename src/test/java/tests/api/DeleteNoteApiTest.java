@@ -10,9 +10,17 @@ import org.testng.annotations.Test;
 
 import org.apache.logging.log4j.Logger;
 
+import utils.AllureUtils;
 import utils.ApiRetryUtility;
 import utils.JsonDataReader;
 import utils.LoggerUtility;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
+@Feature("Notes API")
 
 public class DeleteNoteApiTest {
 
@@ -21,6 +29,11 @@ public class DeleteNoteApiTest {
                     DeleteNoteApiTest.class
             );
 
+    @Severity(SeverityLevel.CRITICAL)
+
+    @Description(
+            "Validates note deletion using delete API"
+    )
     @Test
     public void validateDeleteNoteApi() {
 
@@ -61,6 +74,11 @@ public class DeleteNoteApiTest {
 
         Response response = ApiRetryUtility.executeWithRetry(
                 () -> NotesApi.deleteNote(token, noteId)
+        );
+
+        AllureUtils.attachJson(
+                "DELETE Note Response",
+                response.asPrettyString()
         );
 
 
