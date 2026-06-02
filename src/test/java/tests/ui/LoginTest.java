@@ -5,6 +5,7 @@ import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.JsonDataReader;
 
 
 @Feature("Login Validation")
@@ -23,9 +24,21 @@ public class LoginTest extends BaseTest {
 
         homePage.clickLoginButton();
 
-        loginPage.login(
-                "ayushaccount1@gmail.com",
-                "Ayushaccount1@123"
-        );
+       String email =
+               JsonDataReader.getData(
+                       "login",
+                       "email"
+               );
+
+       String password =
+               JsonDataReader.getData(
+                       "login",
+                       "password"
+               );
+
+       loginPage.login(
+               email,
+               password
+       );
     }
 }
