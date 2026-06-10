@@ -1,10 +1,10 @@
-# 🧪 Enterprise Hybrid QA Automation Framework
+#  Enterprise Hybrid QA Automation Framework
 
 A production-style QA Automation Framework built with Java, Selenium, Rest Assured, TestNG, Maven, Jenkins, Allure, and Agentic Automation concepts — validating a **Notes Management** web application across UI, API, and hybrid layers.
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
